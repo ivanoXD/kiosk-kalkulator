@@ -1,0 +1,16 @@
+{
+  "name": "Interni Kalkulator Kioska",
+  "short_name": "Kiosk Kalkulator",
+  "description": "Interni alat za ponude i narudžbe digital display kioska",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#09090b",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}
