@@ -6,7 +6,7 @@
 
 set -e
 
-APP_DIR="/home/korisnik/kiosk-ponude-app"
+APP_DIR="/home/mtnet/kiosk-ponude-app"
 PM2_APP_NAME="kiosk-kalkulator"
 
 echo ""
