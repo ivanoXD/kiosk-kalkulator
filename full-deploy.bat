@@ -37,7 +37,7 @@ git branch -M main
 git push -u origin main
 
 echo [4/4] Deployam na server (10.3.8.102)...
-ssh mtnet@10.3.8.102 "cd /home/mtnet/kiosk-ponude-app && bash deploy.sh"
+ssh mtnet@10.3.8.102 "if [ ! -d 'kiosk-ponude-app' ]; then git clone https://github.com/ivanoXD/kiosk-kalkulator.git kiosk-ponude-app; fi && cd /home/mtnet/kiosk-ponude-app && bash deploy.sh"
 
 echo.
 echo ========================================
