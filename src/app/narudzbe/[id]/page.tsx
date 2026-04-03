@@ -156,7 +156,7 @@ export default function NarudzbaDetaljiPage() {
               
               <div className="space-y-2.5">
                  <Label className="text-slate-600 font-semibold text-sm">Status poslovanja</Label>
-                 <Select value={form.statusNarudzbe} onValueChange={(v) => handleChange("statusNarudzbe", v)}>
+                  <Select value={form.statusNarudzbe} onValueChange={(v) => handleChange("statusNarudzbe", v ?? "")}>
                    <SelectTrigger className="bg-white shadow-sm h-11 border-slate-200">
                      <SelectValue placeholder="Odaberi..." />
                    </SelectTrigger>
@@ -170,7 +170,7 @@ export default function NarudzbaDetaljiPage() {
 
               <div className="space-y-2.5">
                  <Label className="text-slate-600 font-semibold text-sm flex items-center gap-1.5"><Factory className="h-4 w-4" /> Hardver osigurava: (Dobavljač)</Label>
-                 <Select value={form.supplierId} onValueChange={(v) => handleChange("supplierId", v)}>
+                 <Select value={form.supplierId} onValueChange={(v) => handleChange("supplierId", v ?? "")}>
                    <SelectTrigger className="bg-white shadow-sm h-11 border-slate-200">
                      <SelectValue placeholder="Odaberite partnera (Opcionalno)" />
                    </SelectTrigger>
