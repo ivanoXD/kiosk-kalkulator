@@ -2,7 +2,7 @@
 
 import { useParams, useRouter } from "next/navigation";
 import { useState, useEffect, useMemo } from "react";
-import { db, OfferItem, SubItem } from "@/lib/db";
+import { db, OfferItem, SubItem, generateId } from "@/lib/db";
 import { useLiveQuery } from "dexie-react-hooks";
 import Link from "next/link";
 import { ArrowLeft, Save, Plus, Trash2, Calculator, Tag, HardDrive, RefreshCw } from "lucide-react";
@@ -123,7 +123,7 @@ export default function UrediPonuduPage() {
      const newItems = [...items];
      const arr = [...(newItems[itemIndex][type] || [])];
      arr.push({
-        id: crypto.randomUUID(),
+        id: generateId(),
         naziv: type === 'subscriptions' ? "Softver / licenca..." : "Dodatni nosač / mat...",
         kolicina: 1,
         cijenaProdajna: 0,
@@ -257,7 +257,7 @@ export default function UrediPonuduPage() {
 
       const itemsToSave = calculatedItems.map((ci, index) => ({
          ...ci,
-         id: ci.id || crypto.randomUUID(),
+         id: ci.id || generateId(),
          offerId: id,
          sortOrder: index,
          createdAt: ci.createdAt || new Date(),

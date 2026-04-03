@@ -1,7 +1,7 @@
 'use client';
 
 import { useLiveQuery } from "dexie-react-hooks";
-import { db } from "@/lib/db";
+import { db, generateId } from "@/lib/db";
 import Link from "next/link";
 import { Plus, FileText, Pencil, Trash2, Printer, CheckCircle, Copy } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -35,7 +35,7 @@ export default function PonudePage() {
 
     const items = await db.offerItems.where('offerId').equals(offerId).toArray();
     
-    const newOfferId = crypto.randomUUID();
+    const newOfferId = generateId();
     const newOffer = {
       ...original,
       id: newOfferId,
@@ -48,7 +48,7 @@ export default function PonudePage() {
 
     const newItems = items.map(item => ({
       ...item,
-      id: crypto.randomUUID(),
+      id: generateId(),
       offerId: newOfferId,
       createdAt: new Date(),
       updatedAt: new Date()

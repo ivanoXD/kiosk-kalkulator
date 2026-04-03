@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { db } from "@/lib/db";
+import { db, generateId } from "@/lib/db";
 import Link from "next/link";
 import { ArrowLeft, Save, MonitorSmartphone } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
@@ -41,7 +41,7 @@ export default function NoviKioskModelPage() {
     setSaving(true);
     try {
        await db.kioskModels.add({
-         id: crypto.randomUUID(),
+         id: generateId(),
          sifra: form.sifra,
          nazivModela: form.nazivModela,
          velicinaEkrana: form.velicinaEkrana || null,

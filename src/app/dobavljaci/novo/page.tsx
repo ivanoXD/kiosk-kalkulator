@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { db } from "@/lib/db";
+import { db, generateId } from "@/lib/db";
 import Link from "next/link";
 import { ArrowLeft, Save, Truck } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -35,7 +35,7 @@ export default function NoviDobavljacPage() {
     
     try {
       await db.suppliers.add({
-        id: crypto.randomUUID(),
+        id: generateId(),
         ...formData,
         createdAt: new Date(),
         updatedAt: new Date(),

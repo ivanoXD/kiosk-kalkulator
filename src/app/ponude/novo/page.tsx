@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useMemo } from "react";
-import { db, OfferItem, SubItem } from "@/lib/db";
+import { db, OfferItem, SubItem, generateId } from "@/lib/db";
 import { useLiveQuery } from "dexie-react-hooks";
 import Link from "next/link";
 import { ArrowLeft, Save, Plus, Trash2, Calculator, Tag, HardDrive, RefreshCw } from "lucide-react";
@@ -115,7 +115,7 @@ export default function NovaPonudaPage() {
      const newItems = [...items];
      const arr = newItems[itemIndex][type] || [];
      arr.push({
-        id: crypto.randomUUID(),
+        id: generateId(),
         naziv: type === 'subscriptions' ? "Softver / licenca..." : "Dodatni nosač / mat...",
         kolicina: 1,
         cijenaProdajna: 0,
@@ -228,7 +228,7 @@ export default function NovaPonudaPage() {
     
     try {
       const ts = new Date();
-      const offerId = crypto.randomUUID();
+      const offerId = generateId();
 
       await db.offers.add({
          id: offerId,
@@ -259,7 +259,7 @@ export default function NovaPonudaPage() {
 
       const itemsToSave = calculatedItems.map((ci, index) => ({
          ...ci,
-         id: crypto.randomUUID(),
+         id: generateId(),
          offerId: offerId,
          sortOrder: index,
          createdAt: ts,

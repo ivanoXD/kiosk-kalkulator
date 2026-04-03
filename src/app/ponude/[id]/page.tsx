@@ -2,7 +2,7 @@
 
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { db, Offer, OfferItem, Customer, Settings } from "@/lib/db";
+import { db, Offer, OfferItem, Customer, Settings, generateId } from "@/lib/db";
 import { usePDF } from "react-to-pdf";
 import Link from "next/link";
 import { ArrowLeft, Printer, FileDown, CheckCircle, Clock } from "lucide-react";
@@ -53,7 +53,7 @@ export default function PrikazPonudePage() {
      if(!offer) return;
      if(!confirm("Jeste li sigurni da je ponuda odobrena? Ovo će fiksirati ponudu i prebaciti poslovanje u fazu narudžbe i isporuke.")) return;
      try {
-         const orderId = crypto.randomUUID();
+         const orderId = generateId();
          const ts = new Date();
          await db.orders.add({
             id: orderId,
