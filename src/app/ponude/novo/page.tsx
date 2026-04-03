@@ -303,7 +303,7 @@ export default function NovaPonudaPage() {
               
               <div className="space-y-2 md:col-span-2">
                  <Label className="text-xs font-semibold">Kupac (Naručitelj) <span className="text-red-500">*</span></Label>
-                 <Select value={offerHeader.customerId} onValueChange={(v) => handleHeaderChange("customerId", v)}>
+                <Select value={offerHeader.customerId} onValueChange={(v) => handleHeaderChange("customerId", v ?? "")}>
                    <SelectTrigger className="border-indigo-200 focus:ring-indigo-500"><SelectValue placeholder="Odaberite naručitelja baze" /></SelectTrigger>
                    <SelectContent>
                       {customers.map((c) => (<SelectItem key={c.id} value={c.id}>{c.nazivTvrtke}</SelectItem>))}
@@ -314,7 +314,7 @@ export default function NovaPonudaPage() {
               <div className="space-y-2">
                  <Label className="text-xs font-semibold">Status / Valuta</Label>
                  <div className="flex items-center gap-2">
-                    <Select value={offerHeader.statusPonude} onValueChange={(v) => handleHeaderChange("statusPonude", v)}>
+                    <Select value={offerHeader.statusPonude} onValueChange={(v) => handleHeaderChange("statusPonude", v ?? "")}>
                       <SelectTrigger className="bg-slate-50 flex-1"><SelectValue placeholder="Status" /></SelectTrigger>
                       <SelectContent>
                           <SelectItem value="SKICA">Skica</SelectItem>
@@ -419,7 +419,7 @@ export default function NovaPonudaPage() {
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                            <div className="space-y-2 md:col-span-2">
                               <Label className="text-[11px] uppercase text-slate-500">Kiosk Model (Baza)</Label>
-                              <Select value={item.kioskModelId ?? ""} onValueChange={(v) => handleModelSelect(index, v)}>
+                              <Select value={item.kioskModelId ?? ""} onValueChange={(v) => handleModelSelect(index, v ?? "")}>
                                 <SelectTrigger className="bg-slate-50 border-slate-300"><SelectValue placeholder="Odaberi bazni Kiosk" /></SelectTrigger>
                                 <SelectContent>{kioskModels.map(km => (<SelectItem key={km.id} value={km.id}>{km.nazivModela} [{km.sifra}]</SelectItem>))}</SelectContent>
                               </Select>
