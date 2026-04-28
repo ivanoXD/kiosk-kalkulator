@@ -3,7 +3,7 @@
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState, useRef } from "react";
 import { db, Offer, OfferItem, Customer, Settings, generateId } from "@/lib/db";
-import generatePDF from "react-to-pdf";
+
 import Link from "next/link";
 import { ArrowLeft, Printer, FileDown, CheckCircle, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -93,16 +93,9 @@ export default function PrikazPonudePage() {
         </div>
         <div className="flex flex-wrap items-center gap-2">
            <Button variant="secondary" className="bg-white border text-slate-700" onClick={() => window.print()}><Printer className="mr-2 h-4 w-4" /> Print</Button>
-           <Button className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold shadow-indigo-600/30 shadow-md" onClick={async () => {
-              try {
-                  const getTargetElement = () => document.getElementById('pdf-content');
-                  if (!getTargetElement()) return alert("Sustav ne može locirati dokument.");
-                  await generatePDF(getTargetElement, { filename: `${offer?.brojPonude || 'ponuda'}.pdf` });
-              } catch (e) {
-                  console.error("PDF Generator Error:", e);
-                  alert("Generiranje PDF-a nije uspjelo (provjerite konzolu). Pokušajte koristiti gumb 'Print' i odaberite 'Save as PDF' (Spremi kao PDF).");
-              }
-           }}><FileDown className="mr-2 h-4 w-4" /> Preuzmi PDF za Klijenta</Button>
+           <Button className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold shadow-indigo-600/30 shadow-md" onClick={() => window.print()}>
+              <FileDown className="mr-2 h-4 w-4" /> Preuzmi / Printaj PDF
+           </Button>
            <Button onClick={handleKreirajNarudzbu} disabled={offer.statusPonude !== 'SKICA' && offer.statusPonude !== 'U_IZRADI' && offer.statusPonude !== 'INTERNO_ODOBRENO'} className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold">
               <CheckCircle className="mr-2 h-4 w-4" /> Zatvori u Narudžbu
            </Button>
