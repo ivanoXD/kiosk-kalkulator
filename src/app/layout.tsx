@@ -22,9 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="hr" className={`${inter.variable} h-full antialiased`}>
-      <body className="flex h-screen bg-slate-50 text-slate-900 overflow-hidden font-sans selection:bg-indigo-500/30">
+      <body className="flex h-screen print:h-auto print:block bg-slate-50 text-slate-900 overflow-hidden print:overflow-visible font-sans selection:bg-indigo-500/30">
         <Sidebar />
-        <main className="flex-1 flex flex-col h-full overflow-y-auto bg-slate-50 relative">
+        <main className="flex-1 flex flex-col h-full print:h-auto overflow-y-auto print:overflow-visible bg-slate-50 relative print:bg-white">
           {children}
         </main>
       </body>
